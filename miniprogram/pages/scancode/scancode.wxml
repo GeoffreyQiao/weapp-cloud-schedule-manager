@@ -1,0 +1,9 @@
+<!-- miniprogram/pages/scancode/scancode.wxml -->
+<view class="container">
+    <van-button class='scan-btn' type="primary" size='large' plain bind:click="doScan">
+        扫码
+    </van-button>
+    <van-popup class="well-view" show="{{ show }}" bind:close="onClose">
+        <textarea class="hide-it" name="" id="" cols="30" rows="10" value="{{contant}}"></textarea>
+    </van-popup>
+</view>

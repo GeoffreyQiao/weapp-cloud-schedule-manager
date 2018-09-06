@@ -1,0 +1,26 @@
+<!-- index.wxml -->
+<view class="container">
+    <!-- <view class='row max'> -->
+    <van-panel class="userInfo-panel">
+        <!-- use-footer-slot -->
+        <view class='row user-info'>
+            <button class="info userInfo-avatar" open-type="getUserInfo" bind:getuserinfo="onGetUserInfo">
+                <image class="avatar-pic" src="{{avatarUrl ? avatarUrl : '/vander/images/login_user.png'}}" mode="widthFix" />
+            </button>
+            <view class="info userInfo-nickName" wx:if="{{userInfo.nickName}}">
+                {{userInfo.nickName}}
+            </view>
+            <view class="info  userName" wx:if="{{userName}}">{{userName}}</view>
+            <view class="info hello">
+                {{(userName ?  userName : (userInfo.nickName ?  userInfo.nickName : '')) ? '你好' : '请登录'}}
+            </view>
+        </view>
+        <!-- <view slot="footer">
+            <van-button wx:if="{{!openid}}" plain type='primary' size='small' bind:click="onGetOpenId">
+                获取员工姓名  
+            </van-button>
+        </view> -->
+    </van-panel>
+    <button size="mini" bind:tap="doLogin">Find User</button>
+    <!-- </view> -->
+</view>

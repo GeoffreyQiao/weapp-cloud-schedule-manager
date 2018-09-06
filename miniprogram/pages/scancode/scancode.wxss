@@ -1,0 +1,17 @@
+/* miniprogram/pages/scancode/scancode.wxss */
+page{
+    box-sizing: border-box;
+}
+.well-view>.van-popup{
+    display: block;
+    width: 65%;
+    border-radius: 10px;
+}
+
+.hide-it{
+    width: 100%;
+}
+
+.scan-btn{
+    width: 100%;
+}

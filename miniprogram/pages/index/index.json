@@ -1,0 +1,7 @@
+{
+    "disableScroll": true,
+    "usingComponents": {
+        "van-panel": "vant-weapp/panel",
+        "van-button": "vant-weapp/button"
+    }
+}

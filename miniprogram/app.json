@@ -1,0 +1,30 @@
+{
+    "pages": [
+        "pages/index/index",
+        "pages/scancode/scancode"
+    ],
+    "window": {
+        "backgroundColor": "#9b9b9b",
+        "navigationBarBackgroundColor": "#a7a8a9",
+        "navigationBarTitleText": "Cloud Dev for aCow",
+        "navigationBarTextStyle": "black"
+    },
+    "tabBar": {
+        "backgroundColor": "#9b9b9b",
+        "color": "#FFFFFF",
+        "borderStyle": "black",
+        "list": [
+            {
+                "pagePath": "pages/index/index",
+                "iconPath": "vander/images/login_user.png",
+                "selectedIconPath": "/vander/images/login_user.png",
+                "text": "Home"
+            },
+            {
+                "pagePath": "pages/scancode/scancode",
+                "iconPath": "vander/images/icon_code.png",
+                "text": "扫码找书"
+            }
+        ]
+    }
+}

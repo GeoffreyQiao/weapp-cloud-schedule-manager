@@ -1,0 +1,15 @@
+/**app.wxss**/
+page,.container{
+    height: 100%;
+    width: 100%;
+}
+.row {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0 5%;
+}
+.button-hover {
+    background-color: #747474 !important;
+}
