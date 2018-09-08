@@ -6,8 +6,7 @@
     "window": {
         "backgroundColor": "#9b9b9b",
         "navigationBarBackgroundColor": "#a7a8a9",
-        "navigationBarTitleText": "Cloud Dev for aCow",
-        "navigationBarTextStyle": "black"
+        "navigationBarTitleText": "Cloud Dev for aCow"
     },
     "tabBar": {
         "backgroundColor": "#9b9b9b",

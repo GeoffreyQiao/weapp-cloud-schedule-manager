@@ -4,7 +4,7 @@ var __DEFINE__ = function(modId, func, req) { var m = { exports: {} }; __MODS__[
 var __REQUIRE__ = function(modId, source) { if(!__MODS__[modId]) return require(source); if(!__MODS__[modId].status) { var m = { exports: {} }; __MODS__[modId].status = 1; __MODS__[modId].func(__MODS__[modId].req, m, m.exports); if(typeof m.exports === "object") { Object.keys(m.exports).forEach(function(k) { __MODS__[modId].m.exports[k] = m.exports[k]; }); if(m.exports.__esModule) Object.defineProperty(__MODS__[modId].m.exports, "__esModule", { value: true }); } else { __MODS__[modId].m.exports = m.exports; } } return __MODS__[modId].m.exports; };
 var __REQUIRE_WILDCARD__ = function(obj) { if(obj && obj.__esModule) { return obj; } else { var newObj = {}; if(obj != null) { for(var k in obj) { if (Object.prototype.hasOwnProperty.call(obj, k)) newObj[k] = obj[k]; } } newObj.default = obj; return newObj; } };
 var __REQUIRE_DEFAULT__ = function(obj) { return obj && obj.__esModule ? obj.default : obj; };
-__DEFINE__(1536024544709, function(require, module, exports) {
+__DEFINE__(1536347280804, function(require, module, exports) {
 const storage = require("./src/storage");
 const database = require("./src/db").Db;
 const functions = require("./src/functions");
@@ -98,8 +98,8 @@ extend(Tcb.prototype, storage);
 
 module.exports = new Tcb();
 
-}, function(modId) {var map = {"./src/db":1536024544711,"./src/functions":1536024544726}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1536024544711, function(require, module, exports) {
+}, function(modId) {var map = {"./src/db":1536347280806,"./src/functions":1536347280821}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1536347280806, function(require, module, exports) {
 "use strict";
 function __export(m) {
     for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
@@ -107,8 +107,8 @@ function __export(m) {
 Object.defineProperty(exports, "__esModule", { value: true });
 __export(require("./db"));
 
-}, function(modId) { var map = {"./db":1536024544712}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1536024544712, function(require, module, exports) {
+}, function(modId) { var map = {"./db":1536347280807}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1536347280807, function(require, module, exports) {
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const Geo = require("./geo");
@@ -141,8 +141,8 @@ class Db {
 }
 exports.Db = Db;
 
-}, function(modId) { var map = {"./geo":1536024544713,"./collection":1536024544720,"./command":1536024544718,"./serverDate":1536024544719,"./request":1536024544722}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1536024544713, function(require, module, exports) {
+}, function(modId) { var map = {"./geo":1536347280808,"./collection":1536347280815,"./command":1536347280813,"./serverDate":1536347280814,"./request":1536347280817}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1536347280808, function(require, module, exports) {
 "use strict";
 function __export(m) {
     for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
@@ -150,8 +150,8 @@ function __export(m) {
 Object.defineProperty(exports, "__esModule", { value: true });
 __export(require("./point"));
 
-}, function(modId) { var map = {"./point":1536024544714}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1536024544714, function(require, module, exports) {
+}, function(modId) { var map = {"./point":1536347280809}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1536347280809, function(require, module, exports) {
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const validate_1 = require("../validate");
@@ -165,8 +165,8 @@ class Point {
 }
 exports.Point = Point;
 
-}, function(modId) { var map = {"../validate":1536024544715}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1536024544715, function(require, module, exports) {
+}, function(modId) { var map = {"../validate":1536347280810}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1536347280810, function(require, module, exports) {
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const constant_1 = require("./constant");
@@ -224,8 +224,8 @@ class Validate {
 }
 exports.Validate = Validate;
 
-}, function(modId) { var map = {"./constant":1536024544716,"./util":1536024544717}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1536024544716, function(require, module, exports) {
+}, function(modId) { var map = {"./constant":1536347280811,"./util":1536347280812}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1536347280811, function(require, module, exports) {
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var ErrorCode;
@@ -287,7 +287,7 @@ const UpdateOperatorList = [
 exports.UpdateOperatorList = UpdateOperatorList;
 
 }, function(modId) { var map = {}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1536024544717, function(require, module, exports) {
+__DEFINE__(1536347280812, function(require, module, exports) {
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const constant_1 = require("./constant");
@@ -447,8 +447,8 @@ Util.generateDocId = () => {
 };
 exports.Util = Util;
 
-}, function(modId) { var map = {"./constant":1536024544716,"./geo/point":1536024544714,"./command":1536024544718,"./serverDate":1536024544719}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1536024544718, function(require, module, exports) {
+}, function(modId) { var map = {"./constant":1536347280811,"./geo/point":1536347280809,"./command":1536347280813,"./serverDate":1536347280814}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1536347280813, function(require, module, exports) {
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 class Command {
@@ -585,7 +585,7 @@ class Command {
 exports.Command = Command;
 
 }, function(modId) { var map = {}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1536024544719, function(require, module, exports) {
+__DEFINE__(1536347280814, function(require, module, exports) {
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 class ServerDate {
@@ -596,7 +596,7 @@ class ServerDate {
 exports.ServerDate = ServerDate;
 
 }, function(modId) { var map = {}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1536024544720, function(require, module, exports) {
+__DEFINE__(1536347280815, function(require, module, exports) {
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const document_1 = require("./document");
@@ -618,8 +618,8 @@ class CollectionReference extends query_1.Query {
 }
 exports.CollectionReference = CollectionReference;
 
-}, function(modId) { var map = {"./document":1536024544721,"./query":1536024544725}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1536024544721, function(require, module, exports) {
+}, function(modId) { var map = {"./document":1536347280816,"./query":1536347280820}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1536347280816, function(require, module, exports) {
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const request_1 = require("./request");
@@ -811,8 +811,8 @@ class DocumentReference {
 }
 exports.DocumentReference = DocumentReference;
 
-}, function(modId) { var map = {"./request":1536024544722,"./util":1536024544717,"./command":1536024544718}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1536024544722, function(require, module, exports) {
+}, function(modId) { var map = {"./request":1536347280817,"./util":1536347280812,"./command":1536347280813}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1536347280817, function(require, module, exports) {
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const requestHandler = require("../utils/httpRequest");
@@ -836,8 +836,8 @@ class Request {
 }
 exports.Request = Request;
 
-}, function(modId) { var map = {"../utils/httpRequest":1536024544723}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1536024544723, function(require, module, exports) {
+}, function(modId) { var map = {"../utils/httpRequest":1536347280818}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1536347280818, function(require, module, exports) {
 var request = require("request");
 var auth = require("./auth.js");
 
@@ -938,8 +938,8 @@ module.exports = function (args) {
   });
 };
 
-}, function(modId) { var map = {"./auth.js":1536024544724}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1536024544724, function(require, module, exports) {
+}, function(modId) { var map = {"./auth.js":1536347280819}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1536347280819, function(require, module, exports) {
 var crypto = require("crypto");
 
 function camSafeUrlEncode(str) {
@@ -1095,7 +1095,7 @@ var getAuth = function(opt) {
 exports.getAuth = getAuth;
 
 }, function(modId) { var map = {}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1536024544725, function(require, module, exports) {
+__DEFINE__(1536347280820, function(require, module, exports) {
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const request_1 = require("./request");
@@ -1285,8 +1285,8 @@ class Query {
 }
 exports.Query = Query;
 
-}, function(modId) { var map = {"./request":1536024544722,"./validate":1536024544715,"./util":1536024544717,"./command":1536024544718}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1536024544726, function(require, module, exports) {
+}, function(modId) { var map = {"./request":1536347280817,"./validate":1536347280810,"./util":1536347280812,"./command":1536347280813}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1536347280821, function(require, module, exports) {
 const httpRequest = require("../utils/httpRequest");
 
 /**
@@ -1337,7 +1337,7 @@ function callFunction({ name, data }) {
 
 exports.callFunction = callFunction;
 
-}, function(modId) { var map = {"../utils/httpRequest":1536024544723}; return __REQUIRE__(map[modId], modId); })
-return __REQUIRE__(1536024544709);
+}, function(modId) { var map = {"../utils/httpRequest":1536347280818}; return __REQUIRE__(map[modId], modId); })
+return __REQUIRE__(1536347280804);
 })()
 //# sourceMappingURL=index.js.map

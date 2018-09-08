@@ -15,12 +15,7 @@
                 {{(userName ?  userName : (userInfo.nickName ?  userInfo.nickName : '')) ? '你好' : '请登录'}}
             </view>
         </view>
-        <!-- <view slot="footer">
-            <van-button wx:if="{{!openid}}" plain type='primary' size='small' bind:click="onGetOpenId">
-                获取员工姓名  
-            </van-button>
-        </view> -->
     </van-panel>
     <button size="mini" bind:tap="doLogin">Find User</button>
-    <!-- </view> -->
+    <!-- <open-data type="userAvatarUrl"></open-data> -->
 </view>

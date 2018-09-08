@@ -68,6 +68,7 @@ Page({
 
   },
 
+
   doScan(event) {
     wx.scanCode({
       onlyFromCamera: false, //是否只能从相机扫码，不允许从相册选择图片,

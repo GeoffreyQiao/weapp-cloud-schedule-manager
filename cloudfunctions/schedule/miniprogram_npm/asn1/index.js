@@ -4,7 +4,7 @@ var __DEFINE__ = function(modId, func, req) { var m = { exports: {} }; __MODS__[
 var __REQUIRE__ = function(modId, source) { if(!__MODS__[modId]) return require(source); if(!__MODS__[modId].status) { var m = { exports: {} }; __MODS__[modId].status = 1; __MODS__[modId].func(__MODS__[modId].req, m, m.exports); if(typeof m.exports === "object") { Object.keys(m.exports).forEach(function(k) { __MODS__[modId].m.exports[k] = m.exports[k]; }); if(m.exports.__esModule) Object.defineProperty(__MODS__[modId].m.exports, "__esModule", { value: true }); } else { __MODS__[modId].m.exports = m.exports; } } return __MODS__[modId].m.exports; };
 var __REQUIRE_WILDCARD__ = function(obj) { if(obj && obj.__esModule) { return obj; } else { var newObj = {}; if(obj != null) { for(var k in obj) { if (Object.prototype.hasOwnProperty.call(obj, k)) newObj[k] = obj[k]; } } newObj.default = obj; return newObj; } };
 var __REQUIRE_DEFAULT__ = function(obj) { return obj && obj.__esModule ? obj.default : obj; };
-__DEFINE__(1536024544583, function(require, module, exports) {
+__DEFINE__(1536347280678, function(require, module, exports) {
 // Copyright 2011 Mark Cavage <mcavage@gmail.com> All rights reserved.
 
 // If you have no idea what ASN.1 or BER is, see this:
@@ -26,8 +26,8 @@ module.exports = {
 
 };
 
-}, function(modId) {var map = {"./ber/index":1536024544584}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1536024544584, function(require, module, exports) {
+}, function(modId) {var map = {"./ber/index":1536347280679}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1536347280679, function(require, module, exports) {
 // Copyright 2011 Mark Cavage <mcavage@gmail.com> All rights reserved.
 
 var errors = require('./errors');
@@ -56,8 +56,8 @@ for (var e in errors) {
     module.exports[e] = errors[e];
 }
 
-}, function(modId) { var map = {"./errors":1536024544585,"./types":1536024544586,"./reader":1536024544587,"./writer":1536024544588}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1536024544585, function(require, module, exports) {
+}, function(modId) { var map = {"./errors":1536347280680,"./types":1536347280681,"./reader":1536347280682,"./writer":1536347280683}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1536347280680, function(require, module, exports) {
 // Copyright 2011 Mark Cavage <mcavage@gmail.com> All rights reserved.
 
 
@@ -73,7 +73,7 @@ module.exports = {
 };
 
 }, function(modId) { var map = {}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1536024544586, function(require, module, exports) {
+__DEFINE__(1536347280681, function(require, module, exports) {
 // Copyright 2011 Mark Cavage <mcavage@gmail.com> All rights reserved.
 
 
@@ -112,7 +112,7 @@ module.exports = {
 };
 
 }, function(modId) { var map = {}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1536024544587, function(require, module, exports) {
+__DEFINE__(1536347280682, function(require, module, exports) {
 // Copyright 2011 Mark Cavage <mcavage@gmail.com> All rights reserved.
 
 var assert = require('assert');
@@ -376,8 +376,8 @@ Reader.prototype._readTag = function (tag) {
 
 module.exports = Reader;
 
-}, function(modId) { var map = {"./types":1536024544586,"./errors":1536024544585}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1536024544588, function(require, module, exports) {
+}, function(modId) { var map = {"./types":1536347280681,"./errors":1536347280680}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1536347280683, function(require, module, exports) {
 // Copyright 2011 Mark Cavage <mcavage@gmail.com> All rights reserved.
 
 var assert = require('assert');
@@ -696,7 +696,7 @@ Writer.prototype._ensure = function (len) {
 
 module.exports = Writer;
 
-}, function(modId) { var map = {"./types":1536024544586,"./errors":1536024544585}; return __REQUIRE__(map[modId], modId); })
-return __REQUIRE__(1536024544583);
+}, function(modId) { var map = {"./types":1536347280681,"./errors":1536347280680}; return __REQUIRE__(map[modId], modId); })
+return __REQUIRE__(1536347280678);
 })()
 //# sourceMappingURL=index.js.map

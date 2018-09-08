@@ -1,6 +1,5 @@
 //app.js
-const regeneratorRuntime = require('regenerator-runtime')
-
+// const regeneratorRuntime = require('regenerator-runtime')
 App({
   onLaunch: function () {
     if (!wx.cloud) {
@@ -12,6 +11,13 @@ App({
     }
 
     this.globalData = {}
+  },
+
+  onShow() {
+    wx.setBackgroundColor({
+    //   backgroundColorTop: '#3ddfa9', // 顶部窗口的背景色为白色
+    //   backgroundColorBottom: '#a6df3d', // 底部窗口的背景色为白色
+    })
   },
 
   /**

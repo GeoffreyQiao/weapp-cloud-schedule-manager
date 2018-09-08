@@ -1,6 +1,6 @@
 const regeneratorRuntime = require('regenerator-runtime')
+// import 'regenerator-runtime'
 const app = getApp()
-
 Page({
     /**
      * 页面的初始数据
@@ -34,9 +34,15 @@ Page({
                         }
                     })
                 }
+                this.star()
                 this.doLogin()
             }
         })
+    },
+    async star() {
+        await setTimeout(() => {
+            console.log('可以使用async/await')
+        }, 2000)
     },
 
     /**
