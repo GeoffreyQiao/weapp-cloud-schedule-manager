@@ -1,7 +1,15 @@
 const regeneratorRuntime = require('regenerator-runtime')
-// import 'regenerator-runtime'
 const app = getApp()
+
+wx.cloud.init({
+    traceUser: true
+})
+
+// const computedBehavior = require('miniprogram-computed')
+// import 'regenerator-runtime'
+
 Page({
+    // behaviors: [computedBehavior],
     /**
      * 页面的初始数据
      */
@@ -9,16 +17,21 @@ Page({
         userInfo: {},
         isLogin: false,
         avatarUrl: '',
-        openId: ''
+        openId: '',
+        years: [2015, 2017, 2019],
+        months: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
     },
 
+
+    // computed: {
+    //     name() {
+    //         return 'aaG' + Date.now()
+    //     }
+    // },
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        wx.cloud.init({
-            traceUser: true
-        })
         wx.getSetting({
             success: res => {
                 if (res.authSetting['scope.userInfo']) {
@@ -34,8 +47,8 @@ Page({
                         }
                     })
                 }
-                this.star()
-                this.doLogin()
+                // this.star()
+                // this.doLogin()
             }
         })
     },
@@ -49,13 +62,13 @@ Page({
      * 生命周期函数--监听页面初次渲染完成
      */
     onReady: async function () {
-        if (!this.data.openId) {
-            let id = await this.onGetOpenId()
-            this.setData({
-                openId: id
-            })
-            app.globalData.openId = id
-        }
+        // if (!this.data.openId) {
+        //     let id = await this.onGetOpenId()
+        //     this.setData({
+        //         openId: id
+        //     })
+        //     app.globalData.openId = id
+        // }
     },
 
     /**
@@ -103,7 +116,7 @@ Page({
      * @method  实现登录
      */
     doLogin() {
-        wx.login({
+        let result = wx.login({
             success: res => {
                 wx.cloud.callFunction({
                     name: 'login',
@@ -125,15 +138,6 @@ Page({
         }
     },
 
-    // onGetOpenId() {
-    //     return wx.cloud.callFunction({
-    //         name: 'login',
-    //         data: {},
-    //     }).then(res => {
-    //         console.log(res)
-    //         res.result.userInfo.openId
-    //     })
-    // },
     async onGetOpenId() {
         let option = { name: 'login', data: {} }
         let { result: { userInfo: { openId } } } = await wx.cloud.callFunction(option)

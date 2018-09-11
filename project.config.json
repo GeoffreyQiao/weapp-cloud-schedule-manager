@@ -5,13 +5,14 @@
 		"urlCheck": false,
 		"es6": true,
 		"postcss": true,
-		"minified": true,
+		"minified": false,
 		"newFeature": true,
 		"nodeModules": true
 	},
 	"appid": "wx16f5b1fc81a5bc54",
 	"projectname": "weapp-cloud",
 	"libVersion": "2.2.5",
+	"compileType": "miniprogram",
 	"condition": {
 		"search": {
 			"current": -1,

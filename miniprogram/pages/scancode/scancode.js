@@ -88,5 +88,12 @@ Page({
       show: false,
       contant: ''
     })
+  },
+
+  howManyDaysForMonth([year, month]) {
+    let actualMonth = month - 1;
+    let timeDistance = +new Date(year, month) - +new Date(year, actualMonth);
+    return timeDistance / (1000 * 60 * 60 * 24);
   }
+
 })

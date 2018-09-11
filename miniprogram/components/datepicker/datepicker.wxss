@@ -1,0 +1,29 @@
+/* miniprogram/components/datepicker/datepicker.wxss */
+
+.dp-row {
+  width: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-around;
+}
+.body {
+  width: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-evenly;
+}
+.body-row {
+  width: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+}
+
+.week-days {
+  justify-content: center;
+}
+
+.dp-week-day {
+  display: block;
+  width: 14%;
+}

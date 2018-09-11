@@ -9,9 +9,10 @@
         "navigationBarTitleText": "Cloud Dev for aCow"
     },
     "tabBar": {
-        "backgroundColor": "#9b9b9b",
-        "color": "#FFFFFF",
+        "backgroundColor": "#7d7d7d",
         "borderStyle": "black",
+        "color": "#FFFFFF",
+        "selectedColor": "#a5a5a5",
         "list": [
             {
                 "pagePath": "pages/index/index",

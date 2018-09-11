@@ -1,50 +1,35 @@
 //app.js
-// const regeneratorRuntime = require('regenerator-runtime')
-App({
-  onLaunch: function () {
-    if (!wx.cloud) {
-      console.error('请使用 2.2.3 或以上的基础库以使用云能力')
-    } else {
-      wx.cloud.init({
-        traceUser: true
-      })
-    }
+const regeneratorRuntime = require('regenerator-runtime')
 
-    this.globalData = {}
+if (!wx.cloud) {
+  console.error('请使用 2.2.3 或以上的基础库以使用云能力')
+} else {
+  wx.cloud.init({
+    traceUser: true
+  })
+}
+
+App({
+  async onLaunch() {
+    let s = await this.getOpenid()
+    console.log(s)
+    let { result } = s
+    this.globalData = {
+      openId: result.openId
+    }
+    // console.log(this.globalData)
   },
 
   onShow() {
-    wx.setBackgroundColor({
-    //   backgroundColorTop: '#3ddfa9', // 顶部窗口的背景色为白色
-    //   backgroundColorBottom: '#a6df3d', // 底部窗口的背景色为白色
-    })
   },
 
-  /**
-   * @method  检查用户登陆态
-   */
-  checkLoginStatus() {
-    wx.checkSession({
-      success: async () => {
-        const { result } = await wx.cloud.callFunction({
-          name: 'verifyIdentity',
-          data: {
-            session: wx.getStorageInfoSync('session')
-          }
-        })
-
-        if (result.code == 0) {
-          console.log(result.data)
-          return this.globalData = {
-            openid,
-            session_status
-          }
-        }
-        return wx.removeStorageSync("session")
-
-      }
+  async getOpenid() {
+    return await wx.cloud.callFunction({
+      name: 'login',
+      data: {}
     })
   }
+
 
 })
 

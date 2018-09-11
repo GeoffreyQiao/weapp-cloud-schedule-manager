@@ -1,0 +1,18 @@
+<!-- miniprogram/components/datepicker/datepicker.wxml -->
+<view class="component data-picker containner">
+  <!-- 包含组件body所示月份的年和月，如：2018年08月；左右箭头上下月 -->
+  <view class="dp-row header general">
+    <view class="dp-func pre-month" bind:tap="">{{'<'}}</view>
+    <view class="dp-func current-year-month">{{'2018'}}年{{'09'}}月</view>
+    <view class="dp-func next-month" bind:tap="">{{'>'}}</view>
+  </view>
+  <view class="dp-row body general">
+    <view class="dp-date body-row week-days">
+      <view class="dp-week-day col" style="width: 14%" wx:for="{{weekDays}}">{{item}}</view>
+    </view>
+    <date-picker-day class="body-row days"></date-picker-day>
+  </view>
+  <view class="dp-row foot general">
+    <view class="dp-funcs">{{'组件脚'}}</view>
+  </view>
+</view>
