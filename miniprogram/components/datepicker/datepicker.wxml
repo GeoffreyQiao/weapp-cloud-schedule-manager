@@ -1,18 +1,28 @@
 <!-- miniprogram/components/datepicker/datepicker.wxml -->
 <view class="component data-picker containner">
   <!-- 包含组件body所示月份的年和月，如：2018年08月；左右箭头上下月 -->
-  <view class="dp-row header general">
-    <view class="dp-func pre-month" bind:tap="">{{'<'}}</view>
-    <view class="dp-func current-year-month">{{'2018'}}年{{'09'}}月</view>
-    <view class="dp-func next-month" bind:tap="">{{'>'}}</view>
+  <view class="dp-row dp-header general">
+    <view class="dp-func pre-month" data-month="pre" bind:tap="nearMonth">{{'<'}}</view>
+    <view class="dp-func current-year-month">{{year}} 年
+      {{monthly}} 月</view>
+    <view class="dp-func next-month" data-month="next" bind:tap="nearMonth">{{'>'}}</view>
   </view>
-  <view class="dp-row body general">
-    <view class="dp-date body-row week-days">
-      <view class="dp-week-day col" style="width: 14%" wx:for="{{weekDays}}">{{item}}</view>
+  <view class="dp-row dp-body general">
+    <view class="dp-row weeks">
+      <view class="dp-col dp-week-day {{index >= 5 ? 'weekends' : ''}}" wx:for="{{WEEK}}" wx:key="{{index}}">
+        {{item}}
+      </view>
     </view>
-    <date-picker-day class="body-row days"></date-picker-day>
+    <view class="days dp-row">
+      <view class="dp-col empty-day-col day" wx:if="{{emptyDayCol}}" wx:for="{{emptyDayCol}}" wx:key="{{index}}"></view>
+      <date-picker-day class="dp-col day day-in-current-month {{item.selected ? 'selected-day' : ''}}" wx:for="{{days}}" wx:key="{{item.dayNo}}" id="{{item.dayNo}}" week-name="{{item.weeks}}" bindtap="tapOnDay">
+        <view class="day-warpper">{{item.dayNo}}</view>
+      </date-picker-day>
+    </view>
   </view>
-  <view class="dp-row foot general">
-    <view class="dp-funcs">{{'组件脚'}}</view>
+  <view class="dp-row dp-foot general">
+    <view class="dp-func">
+      <vant-switch custom-class="custom-style" class="same-bgc" title="多日连选" checked="{{'true'}}"></vant-switch>
+    </view>
   </view>
 </view>

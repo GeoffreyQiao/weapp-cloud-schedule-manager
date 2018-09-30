@@ -1,4 +1,6 @@
 {
   "component": true,
-  "usingComponents": {}
+  "usingComponents": {
+    "vant-switch": "vant-weapp/switch-cell"
+  }
 }

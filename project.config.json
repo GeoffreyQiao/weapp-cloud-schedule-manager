@@ -5,13 +5,13 @@
 		"urlCheck": false,
 		"es6": true,
 		"postcss": true,
-		"minified": false,
+		"minified": true,
 		"newFeature": true,
 		"nodeModules": true
 	},
 	"appid": "wx16f5b1fc81a5bc54",
 	"projectname": "weapp-cloud",
-	"libVersion": "2.2.5",
+	"libVersion": "2.3.0",
 	"compileType": "miniprogram",
 	"condition": {
 		"search": {
@@ -30,12 +30,18 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": -1,
+			"current": 1,
 			"list": [
 				{
 					"id": -1,
 					"name": "scancode",
 					"pathName": "pages/scancode/scancode",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "Logining",
+					"pathName": "pages/login/login",
 					"query": ""
 				}
 			]

@@ -1,24 +1,20 @@
 /**index.wxss**/
-page {
-    background: #9b9b9b;
-  font-family: "'微软雅黑'"
-}
 
-.user-info{
+.user-info {
   min-height: 100rpx;
 }
 
-.avatar-pic{
+.avatar-pic {
   width: 100%;
 }
 .userInfo-panel,
 .user-info,
-.van-panel__footer{
+.van-panel__footer {
   font-weight: bold;
   background-color: #2c6ca8 !important;
   color: aliceblue;
 }
-.userInfo-avatar{
+.userInfo-avatar {
   border-radius: 50%;
   border: 0;
   padding: 0;
@@ -27,7 +23,7 @@ page {
   background-color: #747474;
 }
 
-.info{
+.info {
   display: inline-block;
   font-size: 25rpx;
   margin: 0 0 0 20rpx;

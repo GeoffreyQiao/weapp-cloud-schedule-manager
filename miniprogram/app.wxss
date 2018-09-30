@@ -1,20 +1,26 @@
 /**app.wxss**/
-page, page view {
-    box-sizing: border-box;
-    border: 0rpx;
+@import "./libs/weui.wxss";
+
+page,
+page view {
+  box-sizing: border-box;
+  border: 0rpx;
 }
 .tabbar {
-    border: 0;
+  border: 0;
 }
-page,.container{
-    height: 100%;
-    width: 100%;
+page,
+.container {
+  height: 100%;
+  width: 100%;
+  background: #e2e2e2;
+  font-family: "'微软雅黑'";
 }
 .row {
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: flex-start;
-    align-items: center;
-    padding: 0 5%;
-    color: #a5a5a5;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0 5%;
+  color: #a5a5a5;
 }

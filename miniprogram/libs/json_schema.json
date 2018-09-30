@@ -1,0 +1,106 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$id": "http://yapi.demo.qunar.com/editor/",
+  "type": "object",
+  "properties": {
+    "month_no": {
+      "type": "integer",
+      "description": "月份“1-12”",
+      "minimum": 1,
+      "maximum": 12
+    },
+    "days": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "day_no": {
+            "type": "integer",
+            "description": "日期，“1-31”",
+            "minimum": 1,
+            "maximum": 31
+          },
+          "date": {
+            "type": "string",
+            "description": "代表Timestamp的字符串"
+          },
+          "schedules": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "_id": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "start_time": {
+                  "type": "string",
+                  "description": "timestamp"
+                },
+                "end_time": {
+                  "type": "string",
+                  "description": "timestamp"
+                },
+                "worker_min": {
+                  "type": "integer",
+                  "description": "该班次最少需要员工数量"
+                },
+                "worker_max": {
+                  "type": "string",
+                  "description": "该班允许最多几个员工同天同班"
+                },
+                "available": {
+                  "type": "boolean",
+                  "description": "",
+                  "default": true
+                },
+                "workers": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "description": "清单"
+                }
+              },
+              "required": [
+                "_id",
+                "name",
+                "start_time",
+                "end_time",
+                "worker_min",
+                "worker_max",
+                "available",
+                "workers"
+              ],
+              "description": "具体班次"
+            },
+            "description": "包含各班次"
+          },
+          "schedule_mount": {
+            "type": "string"
+          },
+          "max_worker_can_rest": {
+            "type": "string",
+            "description": "当天最多几人可休"
+          }
+        },
+        "required": [
+          "day_no",
+          "date",
+          "schedules",
+          "schedule_mount",
+          "max_worker_can_rest"
+        ],
+        "description": "day，日的模型"
+      },
+      "description": "当月的日列表"
+    }
+  },
+  "required": [
+    "month_no",
+    "days"
+  ],
+  "description": "自然月数据模型"
+}

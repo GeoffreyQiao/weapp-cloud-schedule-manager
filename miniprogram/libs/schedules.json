@@ -1,0 +1,23 @@
+{
+  "month_no": "6",
+  "days": [
+    {
+      "day_no": "",
+      "date": "2018-01-01",
+      "schedules": [
+        {
+          "_id": "1",
+          "name": "早班",
+          "start_time": "9,30,0",
+          "end_time": "17,30,0",
+          "worker_min": "1",
+          "worker_max": "1",
+          "available": "true",
+          "workers": []
+        }
+      ],
+      "schedule_mount": "4",
+      "max_worker_can_rest": "1"
+    }
+  ]
+}

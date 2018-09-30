@@ -8,8 +8,11 @@ wx.cloud.init({
 // const computedBehavior = require('miniprogram-computed')
 // import 'regenerator-runtime'
 
+/**
+ * @todo 1.在用户端保存session，免去每次登录都要与服务器频繁通信。、
+ * @todo 2.完善组件 datepicker 的全部功能
+ */
 Page({
-    // behaviors: [computedBehavior],
     /**
      * 页面的初始数据
      */
@@ -19,18 +22,10 @@ Page({
         avatarUrl: '',
         openId: '',
         years: [2015, 2017, 2019],
-        months: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+        months: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+        app: app
     },
 
-
-    // computed: {
-    //     name() {
-    //         return 'aaG' + Date.now()
-    //     }
-    // },
-    /**
-     * 生命周期函数--监听页面加载
-     */
     onLoad: function (options) {
         wx.getSetting({
             success: res => {
@@ -62,13 +57,6 @@ Page({
      * 生命周期函数--监听页面初次渲染完成
      */
     onReady: async function () {
-        // if (!this.data.openId) {
-        //     let id = await this.onGetOpenId()
-        //     this.setData({
-        //         openId: id
-        //     })
-        //     app.globalData.openId = id
-        // }
     },
 
     /**
@@ -112,22 +100,6 @@ Page({
 
     },
 
-    /**
-     * @method  实现登录
-     */
-    doLogin() {
-        let result = wx.login({
-            success: res => {
-                wx.cloud.callFunction({
-                    name: 'login',
-                    data: {
-                        code: res.code
-                    }
-                })
-            }
-        })
-    },
-
     onGetUserInfo(event) {
         if (!this.data.isLogin && event.detail.userInfo) {
             this.setData({
@@ -138,11 +110,11 @@ Page({
         }
     },
 
-    async onGetOpenId() {
-        let option = { name: 'login', data: {} }
-        let { result: { userInfo: { openId } } } = await wx.cloud.callFunction(option)
-        return openId
-    },
+    // async onGetOpenId() {
+    //     let option = { name: 'login', data: {} }
+    //     let { result: { userInfo: { openId } } } = await wx.cloud.callFunction(option)
+    //     return openId
+    // },
 
     tapOnAvator() {
         wx.showToast({
@@ -155,7 +127,6 @@ Page({
     },
 
     findUser(event) {
-        console.log('wx.cloud:', wx.cloud)
         try {
             wx.cloud.callFunction({
                 name: 'employee',
