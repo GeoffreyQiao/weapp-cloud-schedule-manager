@@ -146,8 +146,27 @@ Page({
             }).then(res => console.log('confirmSchedule:', res))
         }
         catch (err) { console.error(err) }
-    }
+    },
 
+    async getPhoneNo({ detail: { encryptedData, iv } }) {
+        await wx.checkSession({
+            success: async () => {
+                const { result } = await wx.cloud.callFunction({
+                    name: 'phoneNo',
+                    data: {
+                        encryptedData,
+                        iv,
+                        session: await wx.getStorageSync('session')
+                    }
+                })
+                if (result.code === 0) {
+                    this.setData({
+                        phoneNumber: result.data.phoneNumber
+                    })
+                }
+            }
+        })
+    }
 })
 
 // "_id": W4wNUDDbKMc623jT

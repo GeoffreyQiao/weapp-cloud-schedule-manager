@@ -12,5 +12,9 @@
     "miniprogram-computed": "0.0.4",
     "regenerator-runtime": "^0.12.1",
     "vant-weapp": "^0.2.1"
+  },
+  "devDependencies": {
+    "eslint": "^5.6.1",
+    "eslint-plugin-flowtype": "^2.50.3"
   }
 }

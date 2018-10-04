@@ -1,0 +1,36 @@
+declare type Obj = {
+  sucess?: ?any => ?any,
+  fail?: ?Error => ?any,
+  complete?: ?any => ?any
+}
+
+/**@type WX 微信小程序官方api */
+declare class WX {
+
+  /**@property {Object} cloud */
+  cloud: { [x]: any },
+
+  /**@method 检查登陆态的 Session */
+  checkSession(obj: Obj): Promise<void>,
+
+  navigateTo(obj: { url: string } & Obj): Promise<void>,
+
+  navigateBack(obj: { delta: number } & Obj): Promise<void>,
+
+  removeStorageSync(sessionId: string): Promise<void>,
+
+  showLoading(obj: { title: string }): void,
+
+  hideLoading(): void,
+
+  getStorageSync(key: string): string,
+
+  showToast(obj: { title: string, icon?: string, duration?: number } & Obj): Promise<void>
+
+
+}
+declare type pageOptions = { [x]: any }
+
+declare function Page(options: pageOptions): void
+
+declare var wx: WX

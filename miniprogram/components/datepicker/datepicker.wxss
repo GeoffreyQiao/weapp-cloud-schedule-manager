@@ -40,6 +40,8 @@
   align-items: flex-start;
   align-content: flex-start;
   font-weight: 500;
+  /*   box-shadow: 3rpx 3rpx 10rpx #0d7a8d;
+ */
 }
 
 .day,
@@ -66,9 +68,12 @@
   vertical-align: middle;
   text-align: center;
   border-radius: 50% 50%;
-  background-color: rgba(233, 12, 12, 0.158);
 }
 
 .selected-day {
   border-bottom: solid 5rpx #3c85e6;
 }
+
+/* .day-warpper:checked {
+  border-bottom: solid 5rpx #3c85e6;
+} */

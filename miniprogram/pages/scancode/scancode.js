@@ -2,7 +2,6 @@
 // const vant = require('vant-weapp')
 // @ts-ignore
 const regeneratorRuntime = require('regenerator-runtime')
-// import SCHEDULES from '../libs/schedules.json'
 const SelectedDays = new Set()
 if (!wx.cloud) {
   wx.cloud.init()
@@ -79,7 +78,6 @@ Page({
       // selectedDays: Array.from(SelectedDays)
       [`selectedDays[${id}]`]: e.detail.selected
     })
-    console.log(SCHEDULES)
   }
   // /**
   //  * 生命周期函数--监听页面加载

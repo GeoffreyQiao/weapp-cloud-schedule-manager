@@ -1,15 +1,5 @@
 <!-- miniprogram/pages/scancode/scancode.wxml -->
 <view class="container">
-    <!-- <van-button class='scan-btn' type="primary" size='normal' plain bind:click="doScan">
-        扫码
-    </van-button>
-    <van-button class='scan-btn' type="primary" size='normal' plain bind:click="doScan">
-        扫码
-    </van-button>
-    <view>{{userName}}</view> -->
-    <!-- <input type="text" name="name" id="user-name" focus="true" confirm-type="done" bindblur="setUserName" height="15px" width="100%" /> -->
-    <!-- <van-popup class="well-view" show="{{ show }}" bind:close="onClose">
-        <textarea class="hide-it" name="" id="" cols="30" rows="10" value="{{contant}}"></textarea>
-    </van-popup> -->
-    <date-picker year="" month="" bind:onselected="selectedDayChange"></date-picker>
+    <date-picker class="component-display" year="" month="" bind:onselected="selectedDayChange"></date-picker>
+    <view class="test">what?</view>
 </view>

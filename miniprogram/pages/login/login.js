@@ -1,4 +1,6 @@
+// @flow
 const regeneratorRuntime = require('regenerator-runtime')
+
 Page({
   data: {
     route: 'index', // or main
@@ -22,7 +24,7 @@ Page({
           data: {
             session: wx.getStorageSync('session')
           }
-        });
+        })
 
         if (result.code === 0) {
           const { avatarUrl, gender, nickName } = result.data
@@ -30,7 +32,16 @@ Page({
         }
         // 登陆态失效
         else if (result.code === 401) {
-          wx.removeStorageSync('session');
+          wx.removeStorageSync('session')
+          wx.showToast({
+            title: '登录信息已过期，请重新登录',
+            icon: 'none',
+            duration: 1500,
+            complete: () => {
+              wx.removeStorageSync('session');
+              this.setData({ route: 'index' });
+            }
+          })
         }
       },
       fail: () => {
@@ -51,6 +62,9 @@ Page({
     // 登录成功的回调
     const { avatarUrl, nickName, gender } = e.detail
     this.setData({ route: 'main', avatarUrl, nickName, gender })
+    wx.navigateBack({
+      delta: 1
+    })
   },
 
   async bindLogout() {
@@ -78,7 +92,7 @@ Page({
 
   async bindTap() {
     wx.showLoading({
-      title: '请求调用云函数中...'
+      title: '正在验证用户身份...'
     });
     const { result } = await wx.cloud.callFunction({
       // 要调用的云函数名称
@@ -94,7 +108,7 @@ Page({
     if (result.code === 0) {
       wx.showToast({
         title: message,
-        icon: 'none',
+        icon: 'success',
         duration: 2000
       });
     } else {
