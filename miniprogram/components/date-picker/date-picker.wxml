@@ -22,6 +22,7 @@
   </view>
   <view class="dp-row dp-foot general">
     <view class="dp-func">
+      <day wx:for="{{recentlySelectedDay}}" wx:key="day-{{index}}" id="{{index}}">{{item}}</day>
       <vant-switch custom-class="custom-style" class="same-bgc" title="多日连选" checked="{{'true'}}"></vant-switch>
     </view>
   </view>

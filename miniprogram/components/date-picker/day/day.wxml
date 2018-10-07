@@ -1,0 +1,6 @@
+<!-- components/date/date.wxml -->
+<view class="component date day">
+  <text class="" selectable="true" space="false" decode="false">
+    <slot></slot>
+  </text>
+</view>

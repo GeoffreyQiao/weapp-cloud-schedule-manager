@@ -2,6 +2,6 @@
     "usingComponents": {
         "van-button": "vant-weapp/button",
         "van-popup": "vant-weapp/popup",
-        "date-picker": "/components/datepicker/datepicker"
+        "date-picker": "/components/date-picker/date-picker"
     }
 }

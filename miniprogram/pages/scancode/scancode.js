@@ -1,6 +1,5 @@
 // miniprogram/pages/scancode/scancode.js
 // const vant = require('vant-weapp')
-// @ts-ignore
 const regeneratorRuntime = require('regenerator-runtime')
 const SelectedDays = new Set()
 if (!wx.cloud) {
@@ -8,13 +7,12 @@ if (!wx.cloud) {
 }
 
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
     show: false,
-    isShow: "disabled",
+    isShow: 'disabled',
     contant: '',
     userName: 'Geoffrey',
     selectedDays: [],
@@ -29,36 +27,31 @@ Page({
    !=
 */
   async onShow() {
-    // console.log(this)
     this.setData({
       selectedDays: Array.from(SelectedDays)
     })
-    this.testing()
   },
-  async testing() {
-    wx.cloud.callFunction({
-      name: 'test',
-      success: res => console.log(res.result)
-    })
-  },
+
   setUserName(e) {
     let name = e.detail.value
     if (name) this.setData({ userName: name })
   },
 
-  doScan() {
-    wx.scanCode({
-      onlyFromCamera: false, //是否只能从相机扫码，不允许从相册选择图片,
-      success: res => {
-        if (res && res.result) {
-          this.setData({
-            contant: res.result,
-            show: true
-          })
-        }
-      }
-    })
-  },
+  /*   
+   doScan() {
+     wx.scanCode({
+       onlyFromCamera: false, //是否只能从相机扫码，不允许从相册选择图片,
+       success: res => {
+         if (res && res.result) {
+           this.setData({
+             contant: res.result,
+             show: true
+           })
+         }
+       }
+     })
+   },
+  */
 
   onClose() {
     this.setData({
@@ -73,9 +66,10 @@ Page({
 
   selectedDayChange(e) {
     let id = e.detail.id.toString()
-    let days = SelectedDays.has(id) ? SelectedDays.delete(id) : SelectedDays.add(id)
+    let days = SelectedDays.has(id)
+      ? SelectedDays.delete(id)
+      : SelectedDays.add(id)
     this.setData({
-      // selectedDays: Array.from(SelectedDays)
       [`selectedDays[${id}]`]: e.detail.selected
     })
   }
@@ -92,8 +86,6 @@ Page({
   // onReady: function () {
 
   // },
-
-
 
   // /**
   //  * 生命周期函数--监听页面隐藏
@@ -129,5 +121,4 @@ Page({
   // onShareAppMessage: function () {
 
   // },
-
 })

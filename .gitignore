@@ -1,4 +1,9 @@
-config/
+**/config/
 *.config.json
-node_modules/
-miniprogram_npm/
+**/node_modules/
+**/miniprogram_npm/
+flow-typed/
+*.flowconfig
+project.config.json
+.vscode/**
+.vscode/settings.json

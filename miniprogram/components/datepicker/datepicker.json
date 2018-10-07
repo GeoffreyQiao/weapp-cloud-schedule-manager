@@ -1,6 +1,0 @@
-{
-  "component": true,
-  "usingComponents": {
-    "vant-switch": "vant-weapp/switch-cell"
-  }
-}

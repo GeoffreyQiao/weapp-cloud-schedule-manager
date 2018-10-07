@@ -1,7 +1,17 @@
 // @flow
 const regeneratorRuntime = require('regenerator-runtime')
+const computed = require('../../libs/computed-page')
 
 Page({
+  behaviors: [computed],
+  computed: {
+    name() {
+      console.log('geo')
+      return 'Geo'
+    }
+  },
+
+
   data: {
     route: 'index', // or main
     avatarUrl: '',
@@ -9,12 +19,12 @@ Page({
     gender: 0
   },
 
-  onLoad() {
-    this.loging()
+  async onLoad() {
+    await this.loging()
   },
 
-  loging() {
-    wx.checkSession({
+  async loging() {
+    await wx.checkSession({
       success: async () => {
         // 当前仍然有效的话直接去云函数获取用户信息
         const { result } = await wx.cloud.callFunction({
@@ -28,7 +38,7 @@ Page({
 
         if (result.code === 0) {
           const { avatarUrl, gender, nickName } = result.data
-          this.setData({ avatarUrl, nickName, gender, route: 'main' })
+          this.onLoginSuccess({ detail: { avatarUrl, gender, nickName } })
         }
         // 登陆态失效
         else if (result.code === 401) {
@@ -36,7 +46,7 @@ Page({
           wx.showToast({
             title: '登录信息已过期，请重新登录',
             icon: 'none',
-            duration: 1500,
+            duration: 2500,
             complete: () => {
               wx.removeStorageSync('session');
               this.setData({ route: 'index' });
@@ -46,9 +56,9 @@ Page({
       },
       fail: () => {
         wx.showToast({
-          title: '会话过期....',
+          title: '会话过期,请重新登录授权',
           icon: 'none',
-          duration: 1500,
+          duration: 2500,
           complete: () => {
             wx.removeStorageSync('session');
             this.setData({ route: 'index' });
@@ -62,8 +72,9 @@ Page({
     // 登录成功的回调
     const { avatarUrl, nickName, gender } = e.detail
     this.setData({ route: 'main', avatarUrl, nickName, gender })
-    wx.navigateBack({
-      delta: 1
+    wx.switchTab({
+      url: '/pages/index/index',
+      success: () => console.log('成功跳转')
     })
   },
 
@@ -91,9 +102,6 @@ Page({
   },
 
   async bindTap() {
-    wx.showLoading({
-      title: '正在验证用户身份...'
-    });
     const { result } = await wx.cloud.callFunction({
       // 要调用的云函数名称
       name: 'verifyIdentity',
@@ -103,7 +111,6 @@ Page({
       }
     });
 
-    wx.hideLoading()
     const { message } = result
     if (result.code === 0) {
       wx.showToast({
@@ -120,7 +127,7 @@ Page({
           wx.removeStorageSync('session')
           this.setData({ route: 'index' })
         }
-      });
+      })
     }
   }
 })

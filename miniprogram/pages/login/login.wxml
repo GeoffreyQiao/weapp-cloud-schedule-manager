@@ -1,6 +1,7 @@
 <!-- index.wxml -->
 <view class="container" hidden="{{route === 'main'}}">
   <login-component weui-btn="weui-btn" text="登录/注册" bind:loginsuccess="onLoginSuccess"></login-component>
+  <view>{{name}}</view>
 </view>
 <view class="container" hidden="{{route === 'index'}}">
   <image class="img" src="{{avatarUrl}}" />

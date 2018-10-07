@@ -5,9 +5,6 @@ wx.cloud.init({
     traceUser: true
 })
 
-// const computedBehavior = require('miniprogram-computed')
-// import 'regenerator-runtime'
-
 /**
  * @todo 1.在用户端保存session，免去每次登录都要与服务器频繁通信。、
  * @todo 2.完善组件 datepicker 的全部功能
@@ -26,7 +23,7 @@ Page({
         app: app
     },
 
-    onLoad: function (options) {
+    async onLoad(options) {
         wx.getSetting({
             success: res => {
                 if (res.authSetting['scope.userInfo']) {
@@ -46,11 +43,6 @@ Page({
                 // this.doLogin()
             }
         })
-    },
-    async star() {
-        await setTimeout(() => {
-            console.log('可以使用async/await')
-        }, 2000)
     },
 
     /**
@@ -110,12 +102,6 @@ Page({
         }
     },
 
-    // async onGetOpenId() {
-    //     let option = { name: 'login', data: {} }
-    //     let { result: { userInfo: { openId } } } = await wx.cloud.callFunction(option)
-    //     return openId
-    // },
-
     tapOnAvator() {
         wx.showToast({
             title: '成功', //提示的内容,
@@ -164,24 +150,12 @@ Page({
                         phoneNumber: result.data.phoneNumber
                     })
                 }
+            },
+            complete: async () => {
+                await wx.getSetting({
+                    success: r => console.log(r)
+                })
             }
         })
     }
 })
-
-// "_id": W4wNUDDbKMc623jT
-// "booking_date":
-// "day": 11
-// "month": 10
-// "year": 2018
-// "confirmed_users": 0
-// "detail":
-// "loog_noon": null
-// "morning": null
-// "night": null
-// "noon": null
-// "rest": null
-// "have_rested":
-// "have_rested": false
-// "lastInput_employee": W4qzD4Xo7hevFpVv
-// "lastInput_time": Mon Sep 03 2018 00: 19: 28 GMT + 0800(中国标准时间)

@@ -1,3 +1,18 @@
 {
-  "markdown.preview.fontSize": 16
+  "markdown.preview.fontSize": 16,
+  "javascript.validate.enable": false,
+  "flow.useLSP": true,
+  "grunt.autoDetect": "off",
+  "gulp.autoDetect": "off",
+  "jake.autoDetect": "off",
+  "minapp-vscode.disableCustomComponentAutocomponent": true,
+  "php.suggest.basic": false,
+  "php.validate.enable": false,
+  "tslint.enable": false,
+  "[javascript]": {
+    "editor.formatOnSave": true
+  },
+  "files.autoSave": "onFocusChange",
+  "editor.acceptSuggestionOnEnter": "smart",
+  "editor.autoClosingBrackets": "always"
 }

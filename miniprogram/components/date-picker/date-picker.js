@@ -1,7 +1,7 @@
-// @ts-check
-// miniprogram/components/datepicker/datepicker.js
-const Computed = require('miniprogram-computed')
+// miniprogram/components/date-picker/date-picker.js
+const computed = require('miniprogram-computed')
 const Today = new Date()
+
 let today = {
   year: Today.getFullYear(),
   month: Today.getMonth() + 1,
@@ -9,12 +9,10 @@ let today = {
   weeks: Today.getDay() + 1
 }
 
-// @ts-ignore
-Component({
-  behaviors: [Computed],
-  /**
-   * 组件的属性列表
-   */
+const co = Component({
+  behaviors: [computed],
+
+  /* 外部组件传入的参数列表 */
   properties: {
     year: {
       type: Number,
@@ -30,8 +28,7 @@ Component({
     monthlySchedules: {
       type: Array,
       value: []
-    },
-    // app: { type: Object }
+    }
   },
   /**
    * @description 自定义实现的 computed 功能。
@@ -46,9 +43,7 @@ Component({
     }
   },
 
-  /**
-   * 组件的初始数据
-   */
+  /* 组件的初始数据 */
   data: {
     WEEK: ['一', '二', '三', '四', '五', '六', '日'],
     currentYear: today.year,
@@ -57,28 +52,41 @@ Component({
     currentWeeks: today.weeks,
     currentMonthLength: 0,
     emptyDayCol: null,
-    days: []
+    days: [],
+    recentlySelectedDay: 0
 
   },
 
-  created() {
-    //生命周期，此周期无法操作this.setData
+  lifetimes: {
+    created() {
+      //生命周期，此周期无法操作this.setData
+    },
+
+    attached() {
+      this.init()
+    }
   },
 
-  attached() {
-    this.onInit()
-    // @ts-ignore
+  relations: {
+    '/components/date-picker/day/day': {
+      type: 'child',
+      linked: target => {
+        this.setData({
+          month: 1
+        })
+      }
+    }
   },
-  /**
-   * 组件的方法列表
-   */
+
+  /* 组件的方法列表 */
   methods: {
 
     tapOnDay(event) {
       let dayIdx = event.currentTarget.id - 1
       let selected = !this.data.days[dayIdx].selected
       this.setData({
-        [`days[${dayIdx}].selected`]: selected
+        [`days[${dayIdx}].selected`]: selected,
+        recentlySelectedDay: dayIdx - 1
       })
       let detail = {
         id: event.currentTarget.id,
@@ -87,11 +95,11 @@ Component({
       this.triggerEvent('onselected', detail)
     },
 
-    onInit(optins) {
-      let { year, month } = this.data
+    init(options) {
+      let { year, month } = options ? options : this.data
       if (!year) {
-        year = this.data.currentYear,
-          month = this.data.currentMonth
+        year = this.data.currentYear
+        month = this.data.currentMonth
       } else if (!month) {
         month = 1
       }
@@ -161,16 +169,15 @@ Component({
       }
       return this.getDaysListByYearMonth()
     }
-  },
-
+  }
 
 
   /**
    * 数据库中查询指定月份排班计划，有则获取，无则创建
    */
-  getScheduleByMonth({ year, month }) {
+  // getScheduleByMonth({ year, month }) {
 
-  }
+  // }
 })
 
   // howManyDaysForMonth([year, month]) {

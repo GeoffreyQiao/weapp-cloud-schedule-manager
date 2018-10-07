@@ -11,9 +11,6 @@ if (!wx.cloud) {
 
 App({
     async onLaunch() {
-        wx.navigateTo({
-            url: 'pages/login/login',
-        })
     },
 
     onShow() {
