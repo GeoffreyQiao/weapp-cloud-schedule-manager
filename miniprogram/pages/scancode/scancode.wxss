@@ -30,8 +30,3 @@ page {
 .text {
   height: 20%;
 }
-.test {
-  width: 40%;
-  height: 20rpx;
-  background-color: #fff;
-}

@@ -1,0 +1,85 @@
+{
+  "schedules":[
+    {
+      "id":"sch01",
+      "text": "早班",
+      "startTime": "9:30",
+      "endTime": "17:30",
+      "require": true,
+      "maxWorker": 1
+    },
+    {
+      "id": "sch02",
+      "text": "中班",
+      "startTime": "12:00",
+      "endTime": "20:00",
+      "require": true,
+      "maxWorker": 2
+    },
+    {
+      "id": "sch03",
+      "text": "大中班",
+      "startTime": "12:00",
+      "endTime": "22:00",
+      "require": false,
+      "maxWorker": 1
+    },
+    {
+      "id": "sch04",
+      "text": "晚班",
+      "startTime": "14:00",
+      "endTime": "22:00",
+      "require": false,
+      "maxWorker": 1
+    },
+    {
+      "id": "sch05",
+      "text": "轮休",
+      "startTime": "0:00",
+      "endTime": "24:00",
+      "require": false,
+      "maxWorker": 1,
+      "if":{
+        "condition":{
+          "bookedWorker": 1
+        },
+        "affect":[
+          {
+            "ids": ["sch04||sch03"],
+            "result": {
+              "maxWorker": 0
+            }
+          }
+        ]
+      },
+      "else": {
+        "affect": [
+          {
+            "ids": ["sch01","sch02","sch03","sch04"],
+            "result": {
+              "require": true,
+              "maxWorker": 1
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "tabItems":[
+    {
+      "icon": "wap-home",
+      "text": "主页",
+      "route": "index"
+    },
+    {
+      "icon": "setting",
+      "text": "设置",
+      "route": "scancode"
+    },
+    {
+      "icon": "hot-sale",
+      "text": "热卖",
+      "route": "login"
+    }
+  ]
+}

@@ -9,20 +9,22 @@
   </view>
   <view class="dp-row dp-body general">
     <view class="dp-row weeks">
+      <!-- 月历表头，展示周一至周日 -->
       <view class="dp-col dp-week-day {{index >= 5 ? 'weekends' : ''}}" wx:for="{{WEEK}}" wx:key="{{index}}">
         {{item}}
       </view>
     </view>
     <view class="days dp-row">
       <view class="dp-col empty-day-col day" wx:if="{{emptyDayCol}}" wx:for="{{emptyDayCol}}" wx:key="{{index}}"></view>
-      <date-picker-day class="dp-col day day-in-current-month {{item.selected ? 'selected-day' : ''}}" wx:for="{{days}}" wx:key="{{item.dayNo}}" id="{{item.dayNo}}" week-name="{{item.weeks}}" bindtap="tapOnDay">
-        <view class="day-warpper">{{item.dayNo}}</view>
+      <date-picker-day class="dp-col day days-in-current-month {{item.selected ? 'selected-day' : ''}}" wx:for="{{days}}" wx:key="{{item.dayNo}}" id="{{item.dayNo}}" week-name="{{item.weeks}}" bindtap="tapOnDay">
+        <view data-schedule="{{item.schedule}}" class="day-warpper {{item.dayNo === currentDay ? 'today':''}}">
+          {{item.dayNo}}
+        </view>
       </date-picker-day>
     </view>
   </view>
   <view class="dp-row dp-foot general">
     <view class="dp-func">
-      <day wx:for="{{recentlySelectedDay}}" wx:key="day-{{index}}" id="{{index}}">{{item}}</day>
       <vant-switch custom-class="custom-style" class="same-bgc" title="多日连选" checked="{{'true'}}"></vant-switch>
     </view>
   </view>

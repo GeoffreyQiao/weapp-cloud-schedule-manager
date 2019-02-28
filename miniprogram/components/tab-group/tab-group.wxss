@@ -1,0 +1,8 @@
+/* components/tabGroup/tab-group.wxss */
+
+.tab-item.normal {
+  color: #000;
+}
+.tab-item.active {
+  color: rgb(38, 207, 171);
+}

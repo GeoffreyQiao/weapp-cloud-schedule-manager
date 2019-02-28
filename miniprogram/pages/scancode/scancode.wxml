@@ -1,4 +1,5 @@
 <!-- miniprogram/pages/scancode/scancode.wxml -->
 <view class="container">
-    <date-picker class="component-display" testInput="" year="" month="" bind:onselected="selectedDayChange"></date-picker>
+    <tab-group tabs="{{tabItems}}"></tab-group>
+    <date-picker class="component-display" testInput="" year="" month="" bind:onselected="selectedDayChange" bind:oninit="onPickerInited"></date-picker>
 </view>

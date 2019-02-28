@@ -22,7 +22,8 @@ const co = Component({
       type: Number,
       value: today.month
     },
-    selectedFunc: {     //使用该组件页面的获取数据库数据的方法名
+    selectedFunc: {
+      //使用该组件页面的获取数据库数据的方法名
       type: String
     },
     monthlySchedules: {
@@ -54,7 +55,6 @@ const co = Component({
     emptyDayCol: null,
     days: [],
     recentlySelectedDay: 0
-
   },
 
   lifetimes: {
@@ -80,7 +80,6 @@ const co = Component({
 
   /* 组件的方法列表 */
   methods: {
-
     tapOnDay(event) {
       let dayIdx = event.currentTarget.id - 1
       let selected = !this.data.days[dayIdx].selected
@@ -107,19 +106,21 @@ const co = Component({
         year,
         month
       })
-      return this.getDaysListByYearMonth()
+      this.getDaysListByYearMonth()
     },
 
     getDaysListByYearMonth() {
       let { dayMount } = this.howManyDaysForMonth()
       /**@todo 云数据库中查询指定月份的排版记录，有则取，无则建。返回数据为 alreadyHasData  */
       let alreadyHasData = []
+      alreadyHasData[30] = '中'
 
       return this.getDaysArr({
         alreadyHasData,
         dayMount
       })
     },
+
     /**
      * 获取指定月份的天数
      * @param {number?|string?} param0 顺序是[年,月]
@@ -140,6 +141,10 @@ const co = Component({
       }
     },
 
+    /**
+     * 生成指定月天数数组
+     * @param {dayMount:Number, alreadyHasData?:Array<Object>} dayMount:当月天数；alreadyHasData: 从数据库获取的已有数据
+     */
     getDaysArr({ dayMount, alreadyHasData = [] }) {
       let days = []
       for (let i = 1; i <= dayMount; i++) {
@@ -147,7 +152,7 @@ const co = Component({
         let oneDay = {
           dayNo: i,
           weeks: (this.data.emptyDayCol + i) % 7,
-          schedule: scheduleByDay || {},
+          schedule: scheduleByDay || '',
           selected: false
         }
         days.push(oneDay)
@@ -155,8 +160,10 @@ const co = Component({
       this.setData({
         days
       })
+      this.triggerEvent('oninit', days)
       return { success: true }
     },
+
     nearMonth(event) {
       if (event.currentTarget.dataset.month === 'next') {
         this.setData({
@@ -170,19 +177,10 @@ const co = Component({
       return this.getDaysListByYearMonth()
     }
   }
-
-
-  /**
-   * 数据库中查询指定月份排班计划，有则获取，无则创建
-   */
-  // getScheduleByMonth({ year, month }) {
-
-  // }
 })
 
-  // howManyDaysForMonth([year, month]) {
-  //   let actualMonth = month - 1;
-  //   let timeDistance = +new Date(year, month) - +new Date(year, actualMonth);
-  //   return timeDistance / (1000 * 60 * 60 * 24);
-  // }
-
+// howManyDaysForMonth([year, month]) {
+//   let actualMonth = month - 1;
+//   let timeDistance = +new Date(year, month) - +new Date(year, actualMonth);
+//   return timeDistance / (1000 * 60 * 60 * 24);
+// }

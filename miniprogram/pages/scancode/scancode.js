@@ -11,24 +11,34 @@ Page({
    * 页面的初始数据
    */
   data: {
-    show: false,
-    isShow: 'disabled',
+    // show: false,
+    // isShow: 'disabled',
     contant: '',
     userName: 'Geoffrey',
-    selectedDays: [],
+    currentMonth: [],
     route: 'index', // or main
     avatarUrl: '',
     nickName: '',
     gender: 0
   },
 
+  onLoad() {
+    let appData = getApp().globalData
+    this.setData(appData)
+  },
+
   /**
    * 生命周期函数--监听页面显示
-   !=
-*/
+   */
   async onShow() {
     this.setData({
       selectedDays: Array.from(SelectedDays)
+    })
+  },
+
+  onReady() {
+    wx.hideTabBar({
+      animation: true
     })
   },
 
@@ -37,22 +47,6 @@ Page({
     if (name) this.setData({ userName: name })
   },
 
-  /*   
-   doScan() {
-     wx.scanCode({
-       onlyFromCamera: false, //是否只能从相机扫码，不允许从相册选择图片,
-       success: res => {
-         if (res && res.result) {
-           this.setData({
-             contant: res.result,
-             show: true
-           })
-         }
-       }
-     })
-   },
-  */
-
   onClose() {
     this.setData({
       show: false,
@@ -60,6 +54,10 @@ Page({
     })
   },
 
+  /**
+   * 指定月份的天数
+   * @param {*} param0
+   */
   howManyDaysForMonth([year, month]) {
     return new Date(year, month + 1, 0).getDate()
   },
@@ -69,9 +67,12 @@ Page({
     let days = SelectedDays.has(id)
       ? SelectedDays.delete(id)
       : SelectedDays.add(id)
-    this.setData({
-      [`selectedDays[${id}]`]: e.detail.selected
-    })
+    this.setData({ [`currentMonth[${id - 1}].selected`]: e.detail.selected })
+  },
+
+  onPickerInited(e) {
+    const dayList = e.detail
+    this.setData({ currentMonth: dayList })
   }
   // /**
   //  * 生命周期函数--监听页面加载

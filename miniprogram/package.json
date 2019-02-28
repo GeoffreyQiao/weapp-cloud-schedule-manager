@@ -14,7 +14,5 @@
     "vant-weapp": "^0.2.1"
   },
   "devDependencies": {
-    "eslint": "^5.6.1",
-    "eslint-plugin-flowtype": "^2.50.3"
   }
 }

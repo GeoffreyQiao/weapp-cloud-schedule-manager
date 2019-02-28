@@ -1,6 +1,7 @@
 {
   "usingComponents": {
-    "login-component": "/components/loginbtn/loginbtn"
+        "tab-group": "/components/tab-group/tab-group",
+        "login-component": "/components/loginbtn/loginbtn"
   },
   "navigationBarTitleText": "登录页"
 }

@@ -1,5 +1,5 @@
 // components/loginBtn/loginbtn.js
-const regeneratorRuntime = require('regenerator-runtime')
+import * as regeneratorRuntime from 'regenerator-runtime'
 
 Component({
   properties: {
@@ -18,7 +18,7 @@ Component({
         async success(res) {
           const { code } = res
           const { rawData, userInfo } = e.detail
-          wx.showLoading({ title: '登录中...' })
+          wx.showLoading({ title: '登录中...', mask: true })
           const { result } = await wx.cloud.callFunction({
             // 要调用的云函数名称
             name: 'loginRegister',
@@ -27,23 +27,20 @@ Component({
               code,
               rawData
             }
-          });
+          })
           wx.hideLoading()
           if (result.code === 0) {
-            wx.setStorageSync('session', result.data.session);
-            that.triggerEvent('loginsuccess', userInfo);
+            wx.setStorageSync('session', result.data.session)
+            that.triggerEvent('loginsuccess', userInfo)
           } else {
             wx.showToast({
               title: result.message,
               icon: 'none',
               duration: 2000
-            });
+            })
           }
         }
       })
-
     }
-
   }
-
 })

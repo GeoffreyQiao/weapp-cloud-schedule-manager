@@ -1,6 +1,5 @@
 /**app.wxss**/
 @import "./libs/weui.wxss";
-
 page,
 page view {
   box-sizing: border-box;
@@ -9,6 +8,7 @@ page view {
 .tabbar {
   border: 0;
 }
+
 page,
 .container {
   height: 100%;

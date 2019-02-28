@@ -1,5 +1,6 @@
 <!-- index.wxml -->
 <view class="container">
+    <tab-group tabs="{{tabItems}}"></tab-group>
     <!-- <view class='row max'> -->
     <van-panel class="userInfo-panel">
         <!-- use-footer-slot -->
@@ -7,18 +8,17 @@
             <button class="info userInfo-avatar" open-type="getUserInfo" bind:getuserinfo="onGetUserInfo">
                 <image class="avatar-pic" src="{{avatarUrl ? avatarUrl : '/vander/images/login_user.png'}}" mode="widthFix" />
             </button>
-            <view class="info userInfo-nickName" wx:if="{{userInfo.nickName}}">
-                {{userInfo.nickName}}
-            </view>
+            <view class="info userInfo-nickName" wx:if="{{nickName}}">{{nickName}}</view>
             <view class="info  userName" wx:if="{{userName}}">{{userName}}</view>
             <view class="info hello">
-                {{(userName ?  userName : (userInfo.nickName ?  userInfo.nickName : '')) ? '你好' : '请登录'}}
+                {{(userName ?  userName : (nickName ?  nickName : '')) ? '你好' : '请登录'}}
             </view>
         </view>
     </van-panel>
     <button size="mini" bind:tap="doLogin">{{name}}</button>
     <view>{{phoneNumber}}</view>
-    <button class="weui-btn" type="warn" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNo">
+    <van-button round="true" type="primary" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNo">
         获取电话号码
-    </button>
+    </van-button>
+    <button bind:tap="showTab">Show TabBar</button>
 </view>

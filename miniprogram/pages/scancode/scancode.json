@@ -2,6 +2,7 @@
     "usingComponents": {
         "van-button": "vant-weapp/button",
         "van-popup": "vant-weapp/popup",
+        "tab-group": "/components/tab-group/tab-group",
         "date-picker": "/components/date-picker/date-picker"
     }
 }

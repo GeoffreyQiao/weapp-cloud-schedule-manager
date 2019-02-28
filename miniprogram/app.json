@@ -8,24 +8,5 @@
         "backgroundColor": "#9b9b9b",
         "navigationBarBackgroundColor": "#a7a8a9",
         "navigationBarTitleText": "Cloud Dev for aCow"
-    },
-    "tabBar": {
-        "backgroundColor": "#7d7d7d",
-        "borderStyle": "black",
-        "color": "#FFFFFF",
-        "selectedColor": "#a5a5a5",
-        "list": [
-            {
-                "pagePath": "pages/index/index",
-                "iconPath": "vander/images/login_user.png",
-                "selectedIconPath": "/vander/images/login_user.png",
-                "text": "Home"
-            },
-            {
-                "pagePath": "pages/scancode/scancode",
-                "iconPath": "vander/images/icon_code.png",
-                "text": "扫码找书"
-            }
-        ]
     }
 }

@@ -1,4 +1,5 @@
 <!-- index.wxml -->
+<tab-group tabs="{{tabItems}}"></tab-group>
 <view class="container" hidden="{{route === 'main'}}">
   <login-component weui-btn="weui-btn" text="登录/注册" bind:loginsuccess="onLoginSuccess"></login-component>
   <view>{{name}}</view>
@@ -9,5 +10,6 @@
   <text>性别:{{login.transform(gender)}}</text>
   <button class="weui-btn" type="primary" bindtap="bindTap">校验身份</button>
   <button class="weui-btn" type="default" bindtap="bindLogout">注销</button>
+  <button class="weui-btn" type="primary" bindtap="naviToIdx">跳转</button>
 </view>
 <wxs src="./login.wxs" module="login" />
